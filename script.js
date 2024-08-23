@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Obtener el User-Agent del navegador
     var userAgent = navigator.userAgent;
 
     // Llamada a la API de ipinfo.io para obtener la ubicación del usuario
@@ -8,10 +7,23 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             var country = data.country;
 
-            // Mostrar contenido basado en el país
+            // Lista de países asiáticos
+            const asianCountries = [
+                'AF', 'AM', 'AZ', 'BH', 'BD', 'BT', 'BN', 'KH', 'CN', 'CY', 'GE', 'IN', 'ID', 'IR', 
+                'IQ', 'IL', 'JP', 'JO', 'KZ', 'KW', 'KG', 'LA', 'LB', 'MY', 'MV', 'MN', 'MM', 'NP', 
+                'KP', 'OM', 'PK', 'PH', 'QA', 'SA', 'SG', 'KR', 'LK', 'SY', 'TJ', 'TH', 'TL', 'TR', 
+                'TM', 'AE', 'UZ', 'VN', 'YE'
+            ];
+
+            // Bloquear acceso para usuarios de Asia
+            if (asianCountries.includes(country)) {
+                document.getElementById('contenido').innerHTML = "Acceso bloqueado. El contenido no está disponible para usuarios en Asia.";
+                return; // Termina la ejecución del script
+            }
+
+            // Comportamiento basado en el país
             if (country === 'US') {
                 document.getElementById('contenido').innerHTML = "Lo siento, el acceso desde Estados Unidos está bloqueado.";
-                return; // Bloquear más interacciones
             } else if (country === 'MX') {
                 document.getElementById('contenido').innerHTML = "Bienvenido, usuario de México.";
             } else {
@@ -41,3 +53,4 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('contenido').innerHTML = "No se pudo determinar su ubicación.";
         });
 });
+
