@@ -53,4 +53,3 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('contenido').innerHTML = "No se pudo determinar su ubicación.";
         });
 });
-
