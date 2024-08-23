@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /private/
+Disallow: /otro-carpeta-restringida/
+
+# Permitido solo en la página principal
+Allow: /index.html
+
+# Permitir solo una carpeta adicional
+Allow: /public/
